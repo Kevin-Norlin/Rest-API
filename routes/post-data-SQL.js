@@ -28,7 +28,13 @@ router.post('/submitForm', async (req,res) => {
               trustedConnection: true
             }
           });
-         
+        const check = await pool.request()
+        .input('Email',sql.VarChar(8000),data.Email)
+        .query(`SELECT Email,Password FROM ${table_name} WHERE Email = @Email`)
+        if (check.recordset.length > 0) {
+            console.log("bryh")
+            return res.status(400).send("Email already exists")
+        }
         const result = await pool.request()
         .input('Email',sql.VarChar(8000),data.Email)
         .input('Password',sql.VarChar(8000),data.Password)
@@ -40,5 +46,7 @@ router.post('/submitForm', async (req,res) => {
         res.status(500).send('Error storing data in database')
     }
 })
+
+
 
 module.exports = router;
