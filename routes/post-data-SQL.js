@@ -1,28 +1,42 @@
 
 const express = require("express")
-const sql = require("mssql")
-const router = express.Router()
 
+const router = express.Router()
+const sql = require("mssql")
 server_name = 'DESKTOP-LAS76MN'
 database_name = 'MyDB'
 table_name = "LoginDetails"
+user_name = 'sa'
+user_password = '1234'
+driver_version = 'tedious'
 
-router.post('/post-data', async (req,res) => {
+router.post('/submitForm', async (req,res) => {
     const data = req.body
+    if (!data) {
+        return res.status(400).send('No data received')
+    }
     try {
         const pool = await sql.connect({
+            user: user_name,
+            password: user_password,
             server: server_name,
-            database: database_name
+            database: database_name,
+            driver: driver_version,
+            encrypt: false,
             
-        })
+            options: {
+              trustedConnection: true
+            }
+          });
+         
         const result = await pool.request()
-        .input(email,sql.VarChar(50),data.input1)
-        .input(password,sql.VarChar(50),data.input2)
-        .query(`INSERT INTO ${table_name} (Email,Password) VALUES (${email},${password})`)
+        .input('Email',sql.VarChar(8000),data.Email)
+        .input('Password',sql.VarChar(8000),data.Password)
+        .query(`INSERT INTO ${table_name} (Email,Password) VALUES (@Email, @Password)`)
         console.log(result)
     }
-    catch (error) {
-        console.error(error)
+    catch (err) {
+        console.error(err)
         res.status(500).send('Error storing data in database')
     }
 })

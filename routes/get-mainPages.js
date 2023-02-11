@@ -30,4 +30,4 @@ router.route('/shop').get((req,res) => {
     console.log("shop")
     res.sendFile(path.resolve(shop))
 })
-module.exports = router;
+module.exports = router; 
