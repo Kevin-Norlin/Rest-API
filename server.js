@@ -5,29 +5,51 @@ const path = require('path')
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
+
+// Connect javascript and css public files
 app.get('/scripts.js', function (req, res) {
-    res.sendFile(path.join(__dirname, 'public', 'scripts.js'));
-  });
-  
+  res.sendFile(path.join(__dirname, 'public', 'scripts.js'));
+});
+app.get('/style.css', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public', 'style.css'));
+});
 
+ 
+   
 
-
-// db router
+// db router 
 const dbRouter = require("./routes/post-data-SQL")
 app.post('/submitForm',dbRouter)
 
-// mainPages router
-app.use(express.static(path.join(__dirname,"public")))
-const mainPagesRouter = require("./routes/get-mainPages")
-app.use('/',mainPagesRouter)
+
+
+// login router
+const loginRouter = require("./routes/login-route")
+app.use('/login',loginRouter)
+
+//about router
+const aboutRouter = require("./routes/about-route")
+app.use('/about',aboutRouter)
+
+// shop router
+const shopRouter = require("./routes/shop-route")
+app.use('/shop',shopRouter) 
+
+// index router
+const indexRouter = require("./routes/index-route")
+app.use('/',indexRouter)
+
+// page-not-found router
+const notFoundRouter = require("./routes/page-not-found")
+app.use(notFoundRouter)
 
 
 
 
-// Serve static file
-app.get('/scripts.js', function (req, res) {
-    res.sendFile(path.join(__dirname, 'public', 'scripts.js'));
-  });
+
+
+
+
 // Server start
 app.listen(3000, () => {
     console.log("API sever listening on port 3000...")

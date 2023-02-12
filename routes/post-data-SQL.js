@@ -5,7 +5,7 @@ const router = express.Router()
 const sql = require("mssql")
 server_name = 'DESKTOP-LAS76MN'
 database_name = 'MyDB'
-table_name = "LoginDetails"
+table_name = "users"
 user_name = 'sa'
 user_password = '1234'
 driver_version = 'tedious'
@@ -32,7 +32,7 @@ router.post('/submitForm', async (req,res) => {
         .input('Email',sql.VarChar(8000),data.Email)
         .query(`SELECT Email,Password FROM ${table_name} WHERE Email = @Email`)
         if (check.recordset.length > 0) {
-            console.log("bryh")
+            console.log("Email already exists")
             return res.status(400).send("Email already exists")
         }
         const result = await pool.request()
