@@ -14,6 +14,11 @@ app.get('/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'public', 'style.css'));
 });
 
+app.get('/fish.png', function (req,res) {
+  res.sendFile(path.join(__dirname,"public/images",'fish.png'))
+});
+
+
  
    
 

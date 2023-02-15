@@ -1,18 +1,49 @@
+
+
+
 html, body {
     height: 100%;
     width: 100%;
     padding: 0;
     margin: 0;
+    background: #D7E9B9;
+    font-family: 'Varela Round', sans-serif;
 }
 
 body {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
 }
+article {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    align-items: center;
+    overflow: auto;
+
+    
+
+}
+#titleIndexPage {
+    width: 300px;
+    justify-content: center;
+    left: 0px;
+    background-color: red;
+   
+}
+img {
+    width: 550px;
+    height: 400px;
+}
+
 
 header {
     display: flex;
-    height: 100px;
+    min-height: 100px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -58,9 +89,12 @@ header ul {
 
 article {
     flex: auto;
-    background-color: #ccc;
+    border-style: dotted;
+    border-left: none;
+    border-right:none;
 }
 
 footer {
     height: 200px;
 }
+
