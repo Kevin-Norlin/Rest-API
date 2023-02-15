@@ -5,18 +5,11 @@ const path = require('path')
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
+// public html,css and javascript files
+app.use(express.static(__dirname + '/public'));
 
-// Connect javascript and css public files
-app.get('/scripts.js', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'scripts.js'));
-});
-app.get('/style.css', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'style.css'));
-});
-
-app.get('/fish.png', function (req,res) {
-  res.sendFile(path.join(__dirname,"public/images",'fish.png'))
-});
+// images
+app.use(express.static(__dirname+ '/public/images'));
 
 
  

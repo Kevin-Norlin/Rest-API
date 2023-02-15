@@ -11,10 +11,39 @@
     <title>Document</title>
 </head>
 <body>
-    login
-    <form id="reg_form1" method="post"><input type="text" id="reg_email" placeholder="Enter your Email"></form>
-    <form id="reg_form2" method="post"><input type="password" id="reg_password" placeholder="Enter your password"></form>
-    <button type="submit" value="Submit" id="submit_register">Register</button>
-<script src="scripts.js"></script>
+    <header>
+        <h2>Title</h2>
+        <nav>
+            <ul>
+                <ul>
+                    <li><a href="/" id="homeLink"> Home</a></li>
+                    <li><a href="/shop"> Shop</a></li>
+                    <li><a href="/login"> Login</a></li>
+                    <li><a href="/about"> About</a></li>
+                </ul>
+            </ul>
+        </nav>
+    </header>
+    <article id="login_register_article">
+        <section id="Register">
+        <h2> Register</h2>
+        <form id="reg_form1" method="post"><input type="text" id="reg_email" placeholder="Enter your Email"></form>
+        <form id="reg_form2" method="post"><input type="password" id="reg_password" placeholder="Enter a password"></form>
+        <button type="submit" value="Submit" id="submit_register">Register</button>
+        </section>
+
+        <section id="Login">
+            <h2> Log in</h2>
+            <form id="login_form1" method="post"><input type="text" id="login_email" placeholder="Enter your Email"></form>
+            <form id="login_form2" method="post"><input type="password" id="login_password" placeholder="Enter your password"></form>
+            <button type="submit" value="Submit" id="submit_login">Log in</button>
+            </section>
+    </article>
+    <footer>
+        footer
+    </footer>        
+
+    <script src="scripts.js"></script>
 </body>
 </html>
+

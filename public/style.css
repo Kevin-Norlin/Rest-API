@@ -20,7 +20,7 @@ body {
 article {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: baseline;
     align-items: center;
     overflow: auto;
@@ -96,5 +96,18 @@ article {
 
 footer {
     height: 200px;
+}
+
+#login_register_article {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:start;
+    width: 100%;
+    gap:300px;
+    
+    
+    
+    overflow: auto;
 }
 
