@@ -5,6 +5,8 @@ const path = require('path')
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 const session = require("express-session");
+app.set('view engine','ejs')
+
 
 
 app.use(session({
@@ -14,6 +16,18 @@ app.use(session({
     },
     saveUnitilialized: false
 }))
+
+const requireAuth = (req, res, next) => {
+    if (req.session.user && req.session.user.id) {
+      // User is authorized, continue to next middleware or route handler
+      console.log("authfunction");
+      console.log(req.session.user)
+      next();
+    } else {
+      // User is not authorized, redirect to login page or return 401 Unauthorized
+      res.status(401).send('Unauthorized');
+    }
+  };
 
 
 // public html,css and javascript files
@@ -39,7 +53,7 @@ app.use('/login',loginRouter)
 
 // login successful router
 const loginSuccessfulRouter = require("./routes/login-successful-route")
-app.use('/login-successful',loginSuccessfulRouter) 
+app.use('/login-successful',requireAuth,loginSuccessfulRouter) 
 
 //about router
 const aboutRouter = require("./routes/about-route")
@@ -48,6 +62,10 @@ app.use('/about',aboutRouter)
 // shop router
 const shopRouter = require("./routes/shop-route")
 app.use('/shop',shopRouter) 
+
+// my account router
+const myAccountRouter = require("./routes/myaccount-route")
+app.use('/myaccount',requireAuth,myAccountRouter)
 
 // index router
 const indexRouter = require("./routes/index-route")

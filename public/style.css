@@ -62,13 +62,16 @@ ul {
     align-items: center;
     justify-content: center;
     gap: 50px;
-    margin-right: 50px;
+    padding-right:50px;
+    width: auto;
+    
     
    
     list-style-type: none;
 }
 a {
    text-decoration: none;
+   text-align: center;
    
    color: var(--main-background);
 }
@@ -121,4 +124,10 @@ button {
 img {
     width: 200px;
     height: 200px;
+}
+article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
