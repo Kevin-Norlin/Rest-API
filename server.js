@@ -17,13 +17,18 @@ app.use(express.static(__dirname+ '/public/images'));
 
 // db router 
 const dbRouter = require("./routes/post-data-SQL")
-app.post('/submitForm',dbRouter)
+app.post('/submitForm_register',dbRouter)
+app.post('/submitForm_login',dbRouter)
 
 
 
 // login router
 const loginRouter = require("./routes/login-route")
 app.use('/login',loginRouter)
+
+// login successful router
+const loginSuccessfulRouter = require("./routes/login-successful-route")
+app.use('/login-successful',loginSuccessfulRouter) 
 
 //about router
 const aboutRouter = require("./routes/about-route")
