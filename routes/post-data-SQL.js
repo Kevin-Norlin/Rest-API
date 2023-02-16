@@ -83,8 +83,11 @@ router.post('/submitForm_login', async (req,res) => {
               return res.status(400).json({Error : "Something went wrong in passcompare"});
             }
             if (result) {
-              
+              const user = data.Email
               console.log("Match!")
+              req.session.user = {
+                user
+              }
               return res.status(200).json({data :"Match!"})
             } else {
               // Passwords do not match

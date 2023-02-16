@@ -9,6 +9,7 @@ router.route('/')
 .get((req,res) => {
     console.log("login")
     res.sendFile(path.resolve(login))
+    
 })
 
 module.exports = router; 

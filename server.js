@@ -4,6 +4,17 @@ const dirname = "C:\Users\kevin\VsCode\Htmlcss\Rest API"
 const path = require('path')
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
+const session = require("express-session");
+
+
+app.use(session({
+    secret: "testsecret",
+    cookie:{
+        sameSite: "strict",
+    },
+    saveUnitilialized: false
+}))
+
 
 // public html,css and javascript files
 app.use(express.static(__dirname + '/public'));

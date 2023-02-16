@@ -9,6 +9,7 @@ router.route('/')
 .get((req,res) => {
     console.log("login-successful")
     res.sendFile(path.resolve(login))
+    req.session.authenticated = true;
 })
 
 module.exports = router; 
