@@ -123,9 +123,9 @@ button {
 
 img {
    
-    height:60%;
-    width: 60%;
-    object-fit:contain;
+    height:30%;
+    width: 40%;
+    object-fit:scale-down;
 
    
 }
@@ -178,6 +178,7 @@ article {
     align-items: center;
     justify-content: center;
     text-align: center;
+    overflow: hidden;
     width: 30%;
     height:500px;
     background-color: white;

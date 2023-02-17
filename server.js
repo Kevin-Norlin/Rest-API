@@ -55,8 +55,12 @@ const dbRouter = require("./routes/post-userdata-SQL")
 app.post('/submitForm_register',dbRouter)
 app.post('/submitForm_login',dbRouter)
 
+const postItemRouter = require("./routes/post-item-route")
+app.post('/add_product',postItemRouter);
 const productsDbRouter = require("./routes/get-products-route")
+
 app.get('/get_products',productsDbRouter);
+
 
 
 // login router
@@ -98,3 +102,4 @@ app.use(notFoundRouter)
 app.listen(3000, () => {
     console.log("API sever listening on port 3000...")
 })
+

@@ -1,31 +1,41 @@
 
-const imagePath = "../images/items/"
+const imagePath = "../public/images/items/"
 const shopItems = [
     { 
-      title: 'Seiko 5',
+      name: 'Seiko 5',
       description: 'Stainless Steel Black Arabic Dial Automatic SNKP21 SNKP21J1 SNKP21J Mens Watch',
-      imageUrl: `${imagePath}seiko-SNKP2J1J.jpg`
+      image_url: `${imagePath}seiko-SNKP2J1J.jpg`,
+      price: "30000 kr",
+      current_stock: "1"
     },
     { 
-      title: 'Prospex U.S. Special Edition',
+      name: 'Prospex U.S. Special Edition',
       description: 'Celebrates Seiko Prospexs ongoing efforts to promote ocean exploration and conservation. Automatic diver with manual winding capability',
-      imageUrl: `${imagePath}SRPH57_1.webp`
+      image_url: `${imagePath}SRPH57_1.webp`,
+      price: "15000 kr",
+      current_stock: "3"
     },
     {
-        title: 'Seiko prospex 200m diver',
+        name: 'Seiko prospex 200m diver',
         description: "Automatic with manual winding capacity",
-        imageUrl: `${imagePath}neel2_sbdc029_10_1600x.webp`
+        image_url: `${imagePath}neel2_sbdc029_10_1600x.webp`,
+        price: "10000 kr",
+        current_stock: "12"
 
     },
     {
-        title: "Rolex Submariner Date Watch",
+        name: "Rolex Submariner Date Watch",
         description: "It features a unidirectional rotatable bezel and solid-link Oyster bracelet. The latest generation Submariner and Submariner Date remain faithful to the original model launched in 1953",
-        imageUrl: `${imagePath}m126610ln-0001.webp` 
+        image_url: `${imagePath}m126610ln-0001.webp`,
+        price: "110000 kr",
+        current_stock: "18" 
     },
     {
-    title: "Rolex Submariner Hulk",
+    name: "Rolex Submariner Hulk",
     description: "Self-winding Automatic Movement COSC Superlative Chronometer Certified",
-    imageUrl: `${imagePath}WatchGuyNYC_RN128_Rolex_Hulk_Submariner_Date_40_Green_Dial_Mens_Watch_116610LV_1_1024x1024.webp` 
+    image_url: `${imagePath}WatchGuyNYC_RN128_Rolex_Hulk_Submariner_Date_40_Green_Dial_Mens_Watch_116610LV_1_1024x1024.webp`,
+    price: "150000 kr",
+    current_stock: "4" 
     }
     // Add more items here
   ];

@@ -19,7 +19,6 @@ router.route('/')
             .then(data => {
                 console.log(data)
                 shopItems = data;
-                console.log("i am in the function! :D")
                 
             })
             .catch(error => {
@@ -28,11 +27,10 @@ router.route('/')
         console.log("shop")
         console.log(shopItems)
         if (req.session.user) {
-            res.render(path.resolve(shop), { user: req.session.user, id: req.session.user, shopItems: shopItems })
+            res.render(path.resolve(shop), { user: req.session.user, id: req.session.user.id, shopItems: shopItems })
         }
         else {
             res.render(path.resolve(shop), { user: null, shopItems: shopItems })
-            console.log("in route")
             console.log(shopItems)
         }
 
