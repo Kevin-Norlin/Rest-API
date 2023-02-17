@@ -16,7 +16,7 @@ router.route('/')
             res.render(path.resolve(index), { user: null })
         }
 
-    })
+    }) 
 
 
 
