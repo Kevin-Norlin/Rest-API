@@ -3,6 +3,13 @@
     --secondbackground: #385170;
     --headlines-color: #142d4c;
     --border-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    --battleship-gray: #848c8eff;
+
+
+
+--logo-color: #519872;
+--footercolor: #D7D9D7;
+
 }
 
 
@@ -16,54 +23,41 @@ html,body {
     flex-direction: column;
     align-items: center;
     font-family: 'Varela Round', sans-serif;
-    background-repeat: round;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    
-
 }
+
 body {
-    overflow: auto ;
+    overflow: auto;
 }
-header {
 
+header {
     top: 0;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     column-gap: 400px;
-    /*background: var(--main-background); */
     width: 100%;
     flex-wrap: wrap;
-    
     font-size: x-large;
    
-    
-    
-    
 }
 
 header h1 {
-    color: var(--headlines-color);
-    
-  
-    
-    
-    
+    color: var(--logo-color);
 }
+
 header nav {
     gap: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    background: var(--secondbackground); 
+    
+     
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-    
-    
+    /*box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;*/
 }
+
 ul {
     display: flex;
     flex-direction: row;
@@ -72,28 +66,24 @@ ul {
     gap: 50px;
     padding-right:50px;
     width: auto;
-    
-    
-   
     list-style-type: none;
 }
+
 a {
    text-decoration: none;
    text-align: center;
-   
-   color: var(--main-background);
+   color: var(--battleship-gray);
 }
 
 footer {
-    background-color: var(--secondbackground);
+    background-color: #D7D9D7;
     width: 100%;
     min-height: 200px;
     height: 200px;
-    
     margin-top: auto;
-    box-shadow: var(--border-shadow);
-
+    
 }
+
 #login-register-article {
     display: flex;
     flex-direction: row;
@@ -102,6 +92,7 @@ footer {
     align-items: center;
     column-gap: 200px;
 }
+
 #Register, #Login {
     /*background:var(--main-background); */
     color: var(--headlines-color);
@@ -114,6 +105,7 @@ footer {
     row-gap: 20px;
     box-shadow: var(--border-shadow);
 }
+
 input {
     width: auto;
     height: 24px;
@@ -121,6 +113,7 @@ input {
     border:none;
     box-shadow: var(--border-shadow);
 }
+
 button {
    width: 100px;
    height: 37.5px;
@@ -128,22 +121,19 @@ button {
    border-radius: 5px;
 }
 
-
-
-
 img {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-    background:transparent;
+   
+    height:60%;
+    width: 60%;
+    object-fit:contain;
+
+   
 }
+
 article {
     position: relative;
     display: flex;
-   
     width:100%;
-   
-   
     justify-content: center;
     align-items: center;
     flex-direction: row;
@@ -154,15 +144,16 @@ article {
 #shop-filter {
     margin: auto;
     display: flex;
-    border-radius: 2px;
+    align-items: baseline;
+    justify-content: center;
+    
+    padding: 20px;
     width: 20%;
     height: 100%;
-    padding: 10px;
-    /*background-color: var(--main-background); */
     
 }
+
 #shop-content {
-  
     border-radius: 2px;
     margin:auto;
     width: 80%;
@@ -171,11 +162,11 @@ article {
     align-content: flex-start;
     display: flex;
     justify-content: center;
+    
     gap: 0;
-    /*background: var(--main-background); */
     flex-wrap:wrap;
     overflow: auto;
-    /*flex-basis: 100%; */
+ 
 
   
 
@@ -186,6 +177,7 @@ article {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
     width: 30%;
     height:500px;
     background-color: white;
@@ -196,5 +188,32 @@ article {
 }
 .shop-item:hover {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    
+}
+#addToCartIcon:hover {
+    cursor: pointer;
+}
+
+#shoppingcart {
+    visibility: hidden;
+    position: absolute;
+    border-radius: 5px;
+    min-height: 50%;
+    width:30%;
+    z-index: 1;
+    top: 8%;
+    right: 0;
+    background: var(--footercolor);
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    flex-direction: column;
+    
+}
+/* Shoppingcart button*/
+#shoppingcart-checkout {
+    margin: auto;
+}
+#cartIcon:hover {
     cursor:pointer;
 }

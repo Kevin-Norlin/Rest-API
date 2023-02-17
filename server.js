@@ -17,6 +17,14 @@ app.use(session({
     saveUnitilialized: false
 }))
 
+/* A session can have the following:
+* User - containing: id and email
+* cart - containing: array of items that have been added to the cart
+* order - containing: id, adress, totalprice, payment (paymentType, payment details).
+
+
+*/
+
 const requireAuth = (req, res, next) => {
     if (req.session.user && req.session.user.id) {
       // User is authorized, continue to next middleware or route handler
@@ -30,10 +38,12 @@ const requireAuth = (req, res, next) => {
   };
 
 
-// public html,css and javascript files
-app.use(express.static(__dirname + '/public'));
+// public html,css 
+app.use(express.static(__dirname + '/public', {index: false}));
+// javascript
+app.use((express.static(__dirname + '/public/scripts')));
 
-// images
+// images 
 app.use(express.static(__dirname+ '/public/images'));
 
 
@@ -41,10 +51,12 @@ app.use(express.static(__dirname+ '/public/images'));
    
 
 // db router 
-const dbRouter = require("./routes/post-data-SQL")
+const dbRouter = require("./routes/post-userdata-SQL")
 app.post('/submitForm_register',dbRouter)
 app.post('/submitForm_login',dbRouter)
 
+const productsDbRouter = require("./routes/get-products-route")
+app.get('/get_products',productsDbRouter);
 
 
 // login router

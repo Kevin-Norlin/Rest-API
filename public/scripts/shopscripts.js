@@ -1,0 +1,1 @@
+const addToCart = document.getElementById("addToCartIcon");
