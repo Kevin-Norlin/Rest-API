@@ -70,3 +70,15 @@ async function addItem(val) {
     addItem(itemArray[i]);
   }
 */
+
+const addToCartButton = document.querySelectorAll("#addToCartIcon");
+addToCartButton.addEventListener(('click', async (event) =>  {
+  const item = addToCartButton.parentNode;
+  const response = await fetch("http://localhost:3000/add_product_to_cart", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ })
+  });
+}) )

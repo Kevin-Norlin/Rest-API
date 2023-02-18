@@ -58,8 +58,17 @@ app.post('/submitForm_login',dbRouter)
 const postItemRouter = require("./routes/post-item-route")
 app.post('/add_product',postItemRouter);
 const productsDbRouter = require("./routes/get-products-route")
-
 app.get('/get_products',productsDbRouter);
+
+
+
+// addItemToCart router
+const addItemToCartRouter = require("./routes/post-add-product-to-cart-route");
+app.post('/add_product_to_cart',addItemToCartRouter);
+
+
+
+
 
 
 

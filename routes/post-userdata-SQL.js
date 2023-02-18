@@ -90,6 +90,8 @@ router.post('/submitForm_login', async (req, res) => {
         }
         console.log("Match!")
         req.session.user = newUser;
+        
+
 
         return res.status(200).json({ data: "Match!" })
       } else {
