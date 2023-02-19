@@ -1,7 +1,8 @@
 const express = require("express")
 const path = require('path')
 const router = express.Router()
-const dir_name = "public"
+const paths = require('../../paths')
+const dir_name = paths['@views'];
 
 const myAccount = path.join(dir_name, "myaccount.ejs")
 
@@ -13,7 +14,7 @@ router.route('/')
         }
         else {
             res.render(path.resolve(myAccount), { user: null })
-        }
+        } 
 
     })
 

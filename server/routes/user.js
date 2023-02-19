@@ -4,12 +4,12 @@ const uuid = require("uuid");
 const bcrypt = require("bcrypt");
 const router = express.Router()
 const sql = require("mssql")
-server_name = 'DESKTOP-LAS76MN'
-database_name = 'MyDB'
 table_name = "users"
-user_name = 'sa'
-user_password = '1234'
-driver_version = 'tedious'
+
+
+const paths = require('../../paths');
+const pool = require(paths['@database']);
+
 
 router.post('/submitForm_register', async (req, res) => {
   const hashedPassword = await bcrypt.hash(req.body.Password, 10);
@@ -21,18 +21,6 @@ router.post('/submitForm_register', async (req, res) => {
     return res.status(400).json({ data: 'No data received' })
   }
   try {
-    const pool = await sql.connect({
-      user: user_name,
-      password: user_password, 
-      server: server_name,
-      database: database_name,
-      driver: driver_version,
-      encrypt: false,
-
-      options: {
-        trustedConnection: true
-      }
-    });
     const check = await pool.request()
       .input('Email', sql.VarChar(8000), data.Email)
       .query(`SELECT Email,Password FROM ${table_name} WHERE Email = @Email`)
@@ -61,18 +49,6 @@ router.post('/submitForm_login', async (req, res) => {
     return res.status(400).json({ data: 'No data received' })
   }
   try {
-    const pool = await sql.connect({
-      user: user_name,
-      password: user_password,
-      server: server_name,
-      database: database_name,
-      driver: driver_version,
-      encrypt: false,
-
-      options: {
-        trustedConnection: true
-      }
-    });
     const result = await pool.request()
       .input('Email', sql.VarChar(8000), data.Email)
       .query(`SELECT Password FROM ${table_name} WHERE Email = @Email`)

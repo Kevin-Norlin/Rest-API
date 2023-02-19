@@ -1,11 +1,12 @@
 const express = require("express")
 const app = express()
-const dirname = "C:\Users\kevin\VsCode\Htmlcss\Rest API"
 const path = require('path')
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 const session = require("express-session");
 app.set('view engine','ejs')
+app.set('views','./client/public/views/pages')
+const paths = require('./paths');
 
 
 
@@ -38,66 +39,62 @@ const requireAuth = (req, res, next) => {
   };
 
 
-// public html,css 
-app.use(express.static(__dirname + '/public', {index: false}));
-// javascript
-app.use((express.static(__dirname + '/public/scripts')));
 
-// images 
-app.use(express.static(__dirname+ '/public/images'));
+app.use(express.static(path.join(__dirname,'client','public')))
 
 
  
    
 
 // db router 
-const dbRouter = require("./routes/post-userdata-SQL")
+const dbRouter = require(paths['@userRoute'])
 app.post('/submitForm_register',dbRouter)
 app.post('/submitForm_login',dbRouter)
 
-const postItemRouter = require("./routes/post-item-route")
+// Products Router
+/*
+const postItemRouter = require("./routes/post-product")
 app.post('/add_product',postItemRouter);
-const productsDbRouter = require("./routes/get-products-route")
+const productsDbRouter = require("./routes/get-products")
 app.get('/get_products',productsDbRouter);
 
 
 
+
 // addItemToCart router
-const addItemToCartRouter = require("./routes/post-add-product-to-cart-route");
+const addItemToCartRouter = require("./routes/cart");
 app.post('/add_product_to_cart',addItemToCartRouter);
 
 
-
+*/
 
 
 
 
 // login router
-const loginRouter = require("./routes/login-route")
+const loginRouter = require(paths['@loginRoute'])
 app.use('/login',loginRouter)
 
-// login successful router
-const loginSuccessfulRouter = require("./routes/login-successful-route")
-app.use('/login-successful',requireAuth,loginSuccessfulRouter) 
+
 
 //about router
-const aboutRouter = require("./routes/about-route")
+const aboutRouter = require(paths['@aboutRoute'])
 app.use('/about',aboutRouter)
 
 // shop router
-const shopRouter = require("./routes/shop-route")
+const shopRouter = require(paths['@shopRoute'])
 app.use('/shop',shopRouter) 
 
 // my account router
-const myAccountRouter = require("./routes/myaccount-route")
+const myAccountRouter = require(paths['@myaccountRoute'])
 app.use('/myaccount',requireAuth,myAccountRouter)
 
 // index router
-const indexRouter = require("./routes/index-route")
+const indexRouter = require(paths['@indexRoute'])
 app.use('/',indexRouter)
 
 // page-not-found router
-const notFoundRouter = require("./routes/page-not-found")
+const notFoundRouter = require(paths['@pagenotfoundRoute'])
 app.use(notFoundRouter)
 
 
@@ -106,7 +103,7 @@ app.use(notFoundRouter)
 
 
 
-
+require('dotenv').config();
 // Server start
 app.listen(3000, () => {
     console.log("API sever listening on port 3000...")

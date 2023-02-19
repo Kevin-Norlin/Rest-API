@@ -96,7 +96,7 @@ submit_login.addEventListener('click', async(event) => {
     const response = await verifyData_login(email,password);
     console.log(response);
     window.alert("Login succesfull!") // Redirect later!
-    window.location.replace("/login-successful")
+    window.location.replace("/login/login-successful")
   }
   catch (error){
     console.log(error);

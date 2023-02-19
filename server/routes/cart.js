@@ -1,7 +1,8 @@
 const express = require("express")
 const path = require('path')
 const router = express.Router()
-const dir_name = "public"
+const paths = require('../../paths')
+const dir_name = paths['@views'];
 
 router.route('/add_product_to_cart')
     .post((req,res) => {

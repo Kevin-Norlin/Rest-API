@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../css/style.css">
     <title>Document</title>
 </head>
 <body>
@@ -37,15 +37,27 @@
         </nav>
     </header>
     <article>
-    <h2> Index</h2>
-    
-    
+        
+        <div id="shop-filter">
+            <h1>filterollicitudin velit, ollicitudin velit, in vahendrerit vivstas eget. ollicitudin velit, in vahendrerit vivstas eget. ollicitudin velit, in vahendrerit vivstas eget. ollicitudin velit, in vahendrerit vivstas eget. ollicitudin velit, in vahendrerit vivstas eget. ollicitudin velit, in vahendrerit vivstas eget. ollicitudin velit, in vahendrerit vivstas eget. ollicitudin velit, in vahendrerit vivstas eget. ollicitudin velit, in vahendrerit vivstas eget. ollicitudin velit, in vahendrerit vivstas eget. ollicitudin velit, in vahendrerit vivstas eget. ollicitudin velit, in vahendrerit vivstas eget. in vahendrerit vivstas eget. Praesent tincidunt a urna at iaculis.</h1>
+        </div>
+        <div id="shop-content">
+            <% if (shopItems.length) { %>
+                <% for (let item of shopItems) { %>
+                    <%- include("../partials/shop-item.ejs",{ image_url: item.image_url, name: item.name, description: item.description, price : item.price, current_stock : item.current_stock }) %>
+                <% } %>
+                <% }else { %>
+                    <h2>No products avaliable</h2>
+                <% } %>
+                
+        </div> 
     </article>
     <footer>
         footer
     </footer>
     <!-- Font awesome -->
     <script src="https://kit.fontawesome.com/a50106f785.js" crossorigin="anonymous"></script>
-    <script src="generalscripts.js"></script>
+    <script src="../../scripts/shopscripts.js"></script>
+    <script src="../../scripts/generalscripts.js"></script>
 </body>
 </html>
