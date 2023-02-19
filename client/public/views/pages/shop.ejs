@@ -44,7 +44,7 @@
         <div id="shop-content">
             <% if (shopItems.length) { %>
                 <% for (let item of shopItems) { %>
-                    <%- include("../partials/shop-item.ejs",{ image_url: item.image_url, name: item.name, description: item.description, price : item.price, current_stock : item.current_stock }) %>
+                    <%- include("../partials/shop-item.ejs",{ image_url: item.image_url, name: item.name, description: item.description, price : item.price, current_stock : item.current_stock, id: item.id }) %>
                 <% } %>
                 <% }else { %>
                     <h2>No products avaliable</h2>

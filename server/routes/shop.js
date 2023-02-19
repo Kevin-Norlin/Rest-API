@@ -36,4 +36,25 @@ router.route('/')
 
     })
 
-module.exports = router;      
+module.exports = router; 
+
+router.route('/add_product_to_cart')
+    .post((req,res) => {
+        const productToAdd = req.body;
+        const entry = {
+            quantity: 1,
+            product: productToAdd
+        }
+        if (!session.cart) {
+       
+        session.cart = [];
+        session.cart.push(entry);
+        }
+        const index = cart.findIndex(entry => entry.product.id == productToAdd.id);
+        if (index !== -1) {
+            cart[index].quantity++;
+        }
+        else {
+            cart.push(entry);
+        }
+    })

@@ -97,6 +97,11 @@ app.use('/',indexRouter)
 const notFoundRouter = require(paths['@pagenotfoundRoute'])
 app.use(notFoundRouter)
 
+// get-session-data
+app.get('/session-data', (req,res) => {
+  res.json(req.session);
+})
+
 
 
 

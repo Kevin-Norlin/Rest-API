@@ -1,11 +1,11 @@
-<div class="shop-item">
+<div class="shop-product" id="<% id %>">
    
-      <img src="<%= image_url %>">
+      <img src="<%= image_url %>" id="<% image_url %>">
       
-        <h3 class="item-title"><%= name %></h3>
-        <p class="item-description"><%= description %></p>
-        <h3 class="item-price"><%=price %> kr</h3>
-        <h3 class="item-stock"><%=current_stock %> st</h3>
+        <h3 class="product-name" id="<% name %>"><%= name %> </h3>
+        <p class="product-desc" id="<% description %>"><%= description %></p>
+        <h3 class="product-price" id="<% price %>"><%=price %> kr</h3>
+        <h3 class="product-stock"id="<% current_stock %>"><%=current_stock %> st</h3>
         <i id="addToCartIcon" class="fa-solid fa-cart-plus"></i>
     
   </div>

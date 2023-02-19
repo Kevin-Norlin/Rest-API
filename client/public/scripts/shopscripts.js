@@ -70,15 +70,61 @@ async function addItem(val) {
     addItem(itemArray[i]);
   }
 */
-
-const addToCartButton = document.querySelectorAll("#addToCartIcon");
-addToCartButton.addEventListener(('click', async (event) =>  {
-  const item = addToCartButton.parentNode;
-  const response = await fetch("http://localhost:3000/add_product_to_cart", {
+async function addProductToCart() {
+  const productElem = addToCartButton.parentNode;
+  const idToAdd = productElem.getAttribute('id');
+  const children = productElem.children;
+  for (let i = 0; i < children.length; i++) {
+    let className = children[i].classList;
+    switch (className) {
+      case "product-name":
+        const nameToAdd = children[i].getAttribute("id"); break;
+      case "product-desc":
+        const descriptionToAdd = children[i].getAttribute("id"); break;
+      case "product-price":
+        const priceToAdd = children[i].getAttribute("id"); break;
+      case "product-stock":
+        const stockToAdd = children[i].getAttribute("id"); break;
+    } 
+  }
+  const product = {
+    id: idToAdd,
+    name: nameToAdd,
+    description: descriptionToAdd,
+    price: priceToAdd,
+    stock:stockToAdd
+  }
+  const response = await fetch("http://localhost:3000/shop/add_product_to_cart", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ })
+    body: JSON.stringify({product})
   });
-}) )
+  updateCart();
+
+}
+
+const addToCartButton = document.querySelectorAll("#addToCartIcon");
+addToCartButton.addEventListener('click',addProductToCart());
+  
+async function updateCart() {
+  const shoppingCart = document.querySelectorAll("#shoppingcart-items");
+  const sessionData = await fetch("http://localhost:3000/session-data", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  const sessionCart = sessionData.cart;
+  if (sessionData.cart) {
+    for (let i = 0; i < sessionData.cart.length; i++) {
+      shoppingCart.innerHTML = `<img src="${sessionCart.product.image_url} id="${sessionCart.product.image_url}">
+      <h3 class="product-name" id="${sessionCart.product.name}"> ${sessionCart.product.name} </h3> 
+      <h3 class="product-price" id="${sessionCart.product.price}"> ${sessionCart.product.price} </h3>
+      <h3 class="product-quantity" id="${sessionCart.quantity}"> ${sessionCart.quantity} </h3>`
+    }
+  }
+  
+
+}

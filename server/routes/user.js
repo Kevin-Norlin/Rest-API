@@ -10,7 +10,7 @@ table_name = "users"
 const paths = require('../../paths');
 const pool = require(paths['@database']);
 
-
+// Register
 router.post('/submitForm_register', async (req, res) => {
   const hashedPassword = await bcrypt.hash(req.body.Password, 10);
   const data = {
@@ -41,7 +41,7 @@ router.post('/submitForm_register', async (req, res) => {
   }
 })
 
-// TODO: Login 
+// Login 
 router.post('/submitForm_login', async (req, res) => {
   const data = req.body
   if (!data) {
