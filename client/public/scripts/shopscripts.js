@@ -109,4 +109,4 @@ async function updateCart() {
   }
 }
 
-module.exports = updateCart;
+updateCart();
