@@ -15,6 +15,9 @@ const paths = {
   '@scripts': path.resolve(__dirname,'client','public','scripts'),
   '@images': path.resolve(__dirname,'client','public','images'),
 
+  '@sessionclass': path.resolve(__dirname, 'server','models', 'session'),
+
+
   
 
 };

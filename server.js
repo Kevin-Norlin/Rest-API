@@ -92,15 +92,17 @@ app.use('/myaccount',requireAuth,myAccountRouter)
 // index router
 const indexRouter = require(paths['@indexRoute'])
 app.use('/',indexRouter)
-
-// page-not-found router
-const notFoundRouter = require(paths['@pagenotfoundRoute'])
-app.use(notFoundRouter)
-
 // get-session-data
 app.get('/session-data', (req,res) => {
+  
   res.json(req.session);
 })
+
+// page-not-found router 
+const notFoundRouter = require(paths['@pagenotfoundRoute'])
+app.use(notFoundRouter) 
+
+
 
 
 

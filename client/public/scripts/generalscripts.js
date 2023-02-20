@@ -1,3 +1,4 @@
+const updateCart = require("../scripts/shopscripts")
 // Shoppingcart toggle
 const shoppingIcon = document.querySelector("#cartIcon");
 const shoppingCart = document.querySelector("#shoppingcart");
@@ -11,6 +12,9 @@ shoppingIcon.addEventListener('click', () => {
         shoppingCart.style.visibility = "hidden"
     }
 })
+updateCart();
+
+
 
 
 

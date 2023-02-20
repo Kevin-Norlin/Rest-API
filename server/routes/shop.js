@@ -11,6 +11,7 @@ const shop = (paths['@views']);
 
 
 
+
 router.route('/')
     .get(async (req, res) => {
         // Retrieve shopitems from db
@@ -20,13 +21,13 @@ router.route('/')
     
         
         console.log("shop")
-        console.log(shopItems) 
+       
         if (req.session.user) {
             res.render(shop + '/shop.ejs', { user: req.session.user, id: req.session.user.id, shopItems: shopItems })
         }
         else {
             res.render(shop + '/shop.ejs', { user: null, shopItems: shopItems })
-            console.log(shopItems)
+            
         }
     }
     catch (err) {
@@ -40,21 +41,37 @@ module.exports = router;
 
 router.route('/add_product_to_cart')
     .post((req,res) => {
-        const productToAdd = req.body;
+       
+
+        console.log(req.session.cart)
+        const productToAdd = req.body.product;
+        console.log("product")
+        console.log(productToAdd);
+        
         const entry = {
             quantity: 1,
             product: productToAdd
         }
-        if (!session.cart) {
+        if (!req.session.cart) {
        
-        session.cart = [];
-        session.cart.push(entry);
+        req.session.cart = [];
+        req.session.cart.push(entry);
+        return res.status(200).json({ message: 'Product added to cart' });
+     
+        
+        
         }
-        const index = cart.findIndex(entry => entry.product.id == productToAdd.id);
+        const index = req.session.cart.findIndex(product => product.id == productToAdd.id);
         if (index !== -1) {
-            cart[index].quantity++;
+            req.session.cart[index].quantity++;
+            
+            
         }
         else {
-            cart.push(entry);
+            req.session.cart.push(entry);
+            
+           
         }
+        console.log(req.session.cart);
+        res.status(200).json({ message: 'Product added to cart' });
     })
