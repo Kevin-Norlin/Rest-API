@@ -23,5 +23,20 @@ async function updateCart() {
   
     }
   }
+
+const darkModeButton = document.querySelector('#cb2-7');
+darkModeButton.addEventListener('click',toggleDarkMode)
+
+function toggleDarkMode() {
+  const cssLink = document.querySelector('#cssLink');
+  if (cssLink.getAttribute('href') === '../../css/style.css') {
+    cssLink.setAttribute('href','../../css/style-dark.css');
+  }
+  else {
+    cssLink.setAttribute('href','../../css/style.css')
+
+  }
+}
+
   
 updateCart();  

@@ -4,10 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link id="cssLink" rel="stylesheet" href="../../css/style.css">
     <title>Document</title>
 </head>
 <body>
+    <header>
+        <h1>Webshop demo</h1>
+        <nav>
+            <ul>
+                <li><a href="/" id="homeLink"> Home</a></li>
+                <li><a href="/shop"> Shop</a></li>
+                <% if (user && user.id) { %>
+                <li><a href="/myaccount"> My account </a></li>
+                <% } else { %>
+                <li><a href="/login"> Login</a></li>
+                <% } %>
+                <li><a href="/about"> About</a></li>
+                <li id="cartIcon"><i class="fa-solid fa-cart-shopping"></i></li>
+                <li id="toggleMode"> <div class="checkbox-wrapper-7">
+                    <input class="tgl tgl-ios" id="cb2-7" type="checkbox"/>
+                    <label class="tgl-btn" for="cb2-7">
+                  </div>
+                   </li>
+                
+        </ul>
+        </nav>
+    </header>
     <div id="shoppingcart">
         <h2>Shoppingcart</h2>
         <div id="shoppingcart-items">
@@ -22,6 +44,7 @@
     
     <!-- Font awesome -->
     <script src="https://kit.fontawesome.com/a50106f785.js" crossorigin="anonymous"></script>
-   
+    <script type="module" src="../../scripts/generalscripts.js"></script>
+    <script type="module" src="../../scripts/mainscripts.js"></script>
 </body>
 </html>

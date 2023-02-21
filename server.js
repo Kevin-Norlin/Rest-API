@@ -12,10 +12,11 @@ const paths = require('./paths');
 
 app.use(session({
     secret: "testsecret",
+    resave: false,
     cookie:{
         sameSite: "strict",
     },
-    saveUnitilialized: false
+    saveUninitialized: false,
 }))
 
 /* A session can have the following:
@@ -39,13 +40,13 @@ const requireAuth = (req, res, next) => {
   };
 
 
-
+ 
 app.use(express.static(path.join(__dirname,'client','public')))
 
 
  
    
-
+ 
 // db router 
 const dbRouter = require(paths['@userRoute'])
 app.post('/submitForm_register',dbRouter)

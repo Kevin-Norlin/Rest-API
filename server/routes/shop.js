@@ -18,60 +18,46 @@ router.route('/')
         try {
             const result = await pool.request().query(`SELECT * FROM ${table_name}`);
             shopItems = result.recordset;
-    
-        
-        console.log("shop")
-       
-        if (req.session.user) {
-            res.render(shop + '/shop.ejs', { user: req.session.user, id: req.session.user.id, shopItems: shopItems })
+
+
+            console.log("shop")
+
+            if (req.session.user) {
+                res.render(shop + '/shop.ejs', { user: req.session.user, id: req.session.user.id, shopItems: shopItems })
+            }
+            else {
+                res.render(shop + '/shop.ejs', { user: null, shopItems: shopItems })
+
+            }
         }
-        else {
-            res.render(shop + '/shop.ejs', { user: null, shopItems: shopItems })
-            
+        catch (err) {
+            console.error('Error executing database query:', err);
+            res.status(500).send('Internal server error');
         }
-    }
-    catch (err) {
-        console.error('Error executing database query:', err);
-        res.status(500).send('Internal server error');
-    }
 
     })
 
-module.exports = router; 
+module.exports = router;
 
 router.route('/add_product_to_cart')
-    .post((req,res) => {
-       
-
-        console.log(req.session.cart)
+    .post((req, res) => {
         const productToAdd = req.body.product;
-        console.log("product")
-        console.log(productToAdd);
-        
         const entry = {
             quantity: 1,
             product: productToAdd
         }
         if (!req.session.cart) {
-       
-        req.session.cart = [];
-        req.session.cart.push(entry);
-        return res.status(200).json({ message: 'Product added to cart' });
-     
-        
-        
+            req.session.cart = [];
+            req.session.cart.push(entry);
+            return res.status(200).json({ message: 'Product added to cart' });
         }
-        const index = req.session.cart.findIndex(product => product.id == productToAdd.id);
+        const index = req.session.cart.findIndex(obj => obj.product.id === productToAdd.id);
         if (index !== -1) {
             req.session.cart[index].quantity++;
-            
-            
         }
         else {
             req.session.cart.push(entry);
-            
-           
         }
-        console.log(req.session.cart);
+        console.log("Product added to cart")
         res.status(200).json({ message: 'Product added to cart' });
-    })
+    }) 

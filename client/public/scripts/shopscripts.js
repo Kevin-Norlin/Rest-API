@@ -99,10 +99,11 @@ async function updateCart() {
       console.log("here")
       let cartItem = sessionCart[i];
       console.log(cartItem)
-      cartHtml += `<img src="${cartItem.product.image_url}" id="${cartItem.product.image_url}">
+      cartHtml += `<div class="cart-item"><img src="${cartItem.product.image_url}" id="${cartItem.product.image_url}">
+      <div class="cart-item-text">
       <h3 class="product-name" id="${cartItem.product.name}"> ${cartItem.product.name} </h3> 
-      <h3 class="product-price" id="${cartItem.product.price}"> ${cartItem.product.price} </h3>
-      <h3 class="product-quantity" id="${cartItem.quantity}"> ${cartItem.quantity} </h3>`
+      <h3 class="product-price" id="${cartItem.product.price}"> Price:  ${cartItem.product.price} kr </h3>
+      <h3 class="product-quantity" id="${cartItem.quantity}"> Quantity:  ${cartItem.quantity} st </h3> </div> </div>`
     }
     shoppingCart.innerHTML = cartHtml;
 

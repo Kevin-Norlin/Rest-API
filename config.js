@@ -6,4 +6,4 @@ module.exports = {
   DB_USER: process.env.DB_USER,
   DB_PASS: process.env.DB_PASS,
   DB_DRIVER: process.env.DB_DRIVER
-}
+} 
